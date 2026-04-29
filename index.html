@@ -1,26 +1,183 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-  <title>Ayam Laja Wangi</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ayam Laja Wangi</title>
 
-  <!-- CONNECT CSS -->
-  <link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
-  <!-- CONNECT JS -->
-  <script defer src="script.js"></script>
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #0b0b0b;
+  color: white;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  width: 100%;
+  padding: 20px 50px;
+  display: flex;
+  justify-content: space-between;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+nav a:hover {
+  color: #ffb703;
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  background: url('https://images.unsplash.com/photo-1604908176997-431bfc8c0d65') center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 {
+  font-size: 55px;
+}
+
+.btn {
+  margin-top: 20px;
+  padding: 12px 25px;
+  background: #ffb703;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* CARD */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  gap: 30px;
+  padding: 80px 50px;
+}
+
+.card {
+  background: #141414;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* ANIMASI */
+.fade {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 1s;
+}
+
+.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* WA BUTTON */
+.wa {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: #25D366;
+  padding: 15px;
+  border-radius: 50%;
+  font-size: 20px;
+  text-decoration: none;
+}
+</style>
+
 </head>
 
 <body>
 
 <nav>
   <b>Ayam Laja Wangi</b>
+  <div>
+    <a href="#">Home</a>
+    <a href="#">Menu</a>
+    <a href="#">Contact</a>
+  </div>
 </nav>
 
 <section class="hero">
-  <h1>Ayam Laja Wangi</h1>
-  <p>Premium Street Food</p>
-  <button>Order Sekarang</button>
+  <div class="hero-content fade">
+    <h1>Ayam Laja Wangi</h1>
+    <p>Rasa premium, bikin nagih</p>
+    <button class="btn">Pesan Sekarang</button>
+  </div>
 </section>
+
+<section class="grid">
+  <div class="card fade">
+    <img src="https://images.unsplash.com/photo-1608032077018-c9aad9565d29">
+    <h3>Ayam Crispy</h3>
+  </div>
+
+  <div class="card fade">
+    <img src="https://images.unsplash.com/photo-1617196038435-2c04a3d6f9dc">
+    <h3>Ayam Pedas</h3>
+  </div>
+
+  <div class="card fade">
+    <img src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90">
+    <h3>Ayam BBQ</h3>
+  </div>
+</section>
+
+<a class="wa" href="https://wa.me/628XXXXXXXXXX">💬</a>
+
+<script>
+// SCROLL ANIMASI
+const fadeEls = document.querySelectorAll('.fade');
+
+window.addEventListener('scroll', () => {
+  fadeEls.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    if (top < window.innerHeight - 100) {
+      el.classList.add('show');
+    }
+  });
+});
+</script>
 
 </body>
 </html>
